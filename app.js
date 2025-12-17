@@ -105,7 +105,7 @@ function render() {
   <div class="gpa-card shadow-card ${hasAnimated ? "" : "animate-slide-up"}">
     <div class="gpa-header">
       <h3 class="gpa-title">
-        🏆 Your GPA
+        <i class="fa-solid fa-trophy"></i> Your GPA
       </h3>
       ${
         completedUnits > 0
@@ -125,7 +125,7 @@ function render() {
 
     <div class="gpa-section">
       <div class="gpa-units">
-        <span>📘 Units Completed</span>
+        <span><i class="fa-solid fa-book-open"></i> Units Completed</span>
         <span><strong>${completedUnits}</strong> / ${totalUnits}</span>
       </div>
 
@@ -135,7 +135,7 @@ function render() {
     </div>
 
     <div class="gpa-info">
-      📈
+      <i class="fa-solid fa-chart-line"></i>
       <span>
         ${
           completedUnits > 0
