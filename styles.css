@@ -171,10 +171,8 @@ button:hover {
 }
 
 .choice-btn:hover {
-  box-shadow:
-    var(--shadow-elevated),
-    0 0 0 2px var(--ring);
-    transform: translateY(-1px);
+  box-shadow: var(--shadow-elevated), 0 0 0 2px var(--ring);
+  transform: translateY(-1px);
 }
 
 .choice-btn h3 {
@@ -279,6 +277,8 @@ select {
   align-items: center;
   gap: 12px;
   transition: all 0.2s ease;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .course-card:hover {
@@ -322,6 +322,7 @@ select {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* HEADER */
@@ -457,6 +458,7 @@ select {
   border: 1px solid var(--border);
   background: var(--muted);
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 /* =======================
