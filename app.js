@@ -79,7 +79,7 @@ function render() {
   // Program Label
   programLabel.textContent =
     studentType === "major"
-      ? "Computer Science Major"
+      ? "Computer Science"
       : studentType === "computer-stat"
       ? "Computer / Statistics"
       : "";
