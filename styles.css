@@ -499,11 +499,92 @@ select {
    GPA BOX
 ======================= */
 #gpa-box {
-  margin-top: 20px;
-  padding: 20px;
+  margin: 20px 0;
+  /* padding: 20px; */
   border-radius: var(--radius);
-  background: var(--card);
+  /* background: var(--card); */
   box-shadow: var(--shadow-elevated);
+}
+
+/* =======================
+   GPA DISPLAY
+======================= */
+.gpa-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.gpa-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.gpa-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.gpa-class {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.gpa-score {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gpa-value {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.gpa-max {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted-foreground);
+}
+
+.gpa-section {
+  margin-bottom: 16px;
+}
+
+.gpa-units {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--muted-foreground);
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--muted);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: width 0.4s ease;
+}
+
+.gpa-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  background: hsl(150 15% 94% / 0.6);
+  padding: 12px;
+  border-radius: 12px;
+  color: var(--muted-foreground);
 }
 
 /* =======================
@@ -578,15 +659,6 @@ footer {
 /* =======================
    STUDENT SELECT SCREEN
 ======================= */
-/* .center-box {
-  min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-} */
 
 .logo-container {
   width: 100%;
@@ -617,15 +689,6 @@ footer {
   margin-bottom: 1.5rem;
   margin-top: 3rem;
 }
-
-/* .btn-group {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  max-width: 700px;
-  width: 100%;
-  margin-top: 10px;
-} */
 
 .footer-text {
   margin-top: 40px;
