@@ -167,13 +167,14 @@ button:hover {
 .choice-btn {
   text-align: left;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .choice-btn:hover {
-  box-shadow: var(--shadow-elevated);
-  transform: translateY(-2px);
-  border: 2px solid var(--primary);
+  box-shadow:
+    var(--shadow-elevated),
+    0 0 0 2px var(--ring);
+    transform: translateY(-1px);
 }
 
 .choice-btn h3 {
@@ -402,6 +403,7 @@ select {
 .icon-btn:hover {
   background: var(--muted);
   color: var(--foreground);
+  box-shadow: var(--shadow-soft);
 }
 
 .reset-btn {
@@ -510,9 +512,7 @@ select {
 ======================= */
 #gpa-box {
   margin: 20px 0;
-  /* padding: 20px; */
   border-radius: var(--radius);
-  /* background: var(--card); */
   box-shadow: var(--shadow-elevated);
 }
 
