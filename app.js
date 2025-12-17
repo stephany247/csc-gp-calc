@@ -13,6 +13,7 @@ function selectStudentType(type) {
   studentType = type;
   studentScreen.classList.add("hidden");
   calculatorScreen.classList.remove("hidden");
+  saveToStorage();
   render();
 }
 
@@ -25,6 +26,7 @@ function goBack() {
 
 function resetGrades() {
   grades = {};
+  saveToStorage();
   render();
 }
 
@@ -35,9 +37,9 @@ function changeLevel(level) {
 }
 
 function setGrade(code, value) {
-  // e.preventDefault();
   if (value === "") delete grades[code];
   else grades[code] = value;
+  saveToStorage();
   render();
   return false;
 }
@@ -124,6 +126,32 @@ function calculateBreakdown() {
 
   return breakdown;
 }
+
+const STORAGE_KEY = "nacos-gp-calculator";
+
+function saveToStorage() {
+  const data = {
+    studentType,
+    selectedLevel,
+    grades
+  };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function loadFromStorage() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+
+  try {
+    const data = JSON.parse(raw);
+    studentType = data.studentType ?? null;
+    selectedLevel = data.selectedLevel ?? "100 Level";
+    grades = data.grades ?? {};
+  } catch {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+}
+
 
 let hasAnimated = false;
 let coursesAnimated = false;
@@ -305,4 +333,12 @@ function render() {
     });
     coursesAnimated = true;
   }
+}
+
+loadFromStorage();
+
+if (studentType) {
+  studentScreen.classList.add("hidden");
+  calculatorScreen.classList.remove("hidden");
+  render();
 }
