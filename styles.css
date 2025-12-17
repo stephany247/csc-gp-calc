@@ -325,8 +325,10 @@ select {
   top: 0;
   z-index: 40;
   background: hsl(150 20% 98% / 0.8);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
   width: 100%;
 }
 
@@ -404,13 +406,15 @@ select {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 8px 16px;
   border-radius: 8px;
   border: 1px solid var(--border);
   background: transparent;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--muted-foreground);
   cursor: pointer;
+  width: fit-content;
 }
 
 .reset-btn:hover {
@@ -643,8 +647,17 @@ footer {
 /* =======================
    RESPONSIVE
 ======================= */
-@media (min-width: 768px) {
+
+@media (min-width: 48rem) {
   .btn-group {
-    grid-template-columns: 1fr 1fr;
+    flex-direction: row;
+    max-width: 42rem;
+    margin: auto;
+  }
+}
+
+@media (min-width: 40rem) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

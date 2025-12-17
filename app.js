@@ -7,6 +7,7 @@ const calculatorScreen = document.getElementById("calculator-screen");
 const tabsDiv = document.getElementById("tabs");
 const contentDiv = document.getElementById("content");
 const gpaBox = document.getElementById("gpa-box");
+const programLabel = document.getElementById("program-label");
 
 function selectStudentType(type) {
   studentType = type;
@@ -39,12 +40,6 @@ function setGrade(code, value) {
   render();
 }
 
-document.getElementById("program-label").textContent =
-  studentType === "major"
-    ? "Computer Science Major"
-    : "Computer / Statistics";
-
-
 function calculateGPA() {
   let totalQP = 0;
   let totalUnits = 0;
@@ -76,6 +71,14 @@ function calculateGPA() {
 }
 
 function render() {
+  // Program Label
+  programLabel.textContent =
+    studentType === "major"
+      ? "Computer Science Major"
+      : studentType === "computer-stat"
+      ? "Computer / Statistics"
+      : "";
+
   // Tabs
   tabsDiv.innerHTML = `
   <div class="tabs-wrapper">
