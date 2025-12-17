@@ -72,6 +72,59 @@ function calculateGPA() {
   };
 }
 
+function calculateBreakdown() {
+  const breakdown = [];
+
+  curriculum.forEach((level) => {
+    let levelQP = 0;
+    let levelUnits = 0;
+
+    const semesters = level.semesters
+      .map((sem) => {
+        let semQP = 0;
+        let semUnits = 0;
+
+        sem.courses.forEach((course) => {
+          const units =
+            studentType === "major"
+              ? course.unitsMajor
+              : course.unitsComputerStat;
+
+          const grade = grades[course.code];
+          if (grade) {
+            semQP += gradePoints[grade] * units;
+            semUnits += units;
+          }
+        });
+
+        // Skip semester if no grades
+        if (!semUnits) return null;
+
+        // Accumulate for level GPA
+        levelQP += semQP;
+        levelUnits += semUnits;
+
+        return {
+          name: sem.name,
+          gpa: (semQP / semUnits).toFixed(2),
+          units: semUnits,
+        };
+      })
+      .filter(Boolean);
+
+    // Skip level if no semester has grades
+    if (!semesters.length) return;
+
+    breakdown.push({
+      level: level.level,
+      levelGpa: (levelQP / levelUnits).toFixed(2),
+      semesters,
+    });
+  });
+
+  return breakdown;
+}
+
 let hasAnimated = false;
 let coursesAnimated = false;
 
@@ -86,6 +139,7 @@ function render() {
 
   // GPA box
   const { gpa, completedUnits, totalUnits } = calculateGPA();
+  const breakdown = calculateBreakdown();
 
   let classification = { label: "", color: "" };
 
@@ -144,6 +198,34 @@ function render() {
         }
       </span>
     </div>
+<div class="gpa-breakdown">
+  ${breakdown
+    .map(
+      (level) => `
+    <div class="breakdown-level">
+
+      <div class="breakdown-level-header">
+        <h4>${level.level}</h4>
+        <span class="level-gpa">GP: ${level.levelGpa}</span>
+      </div>
+
+      ${level.semesters
+        .map(
+          (sem) => `
+        <div class="breakdown-row">
+          <span>${sem.name}</span>
+          <span>${sem.gpa}</span>
+        </div>
+      `
+        )
+        .join("")}
+
+    </div>
+  `
+    )
+    .join("")}
+</div>
+
   </div>
 `;
   hasAnimated = true;
