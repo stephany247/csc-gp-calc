@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UNN GP Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- STUDENT TYPE SCREEN -->
+    <div id="student-screen" class="screen animate-fade-in">
+      <div class="center-box">
+        <div class="logo-container">
+          <div class="logo gradient-primary shadow-soft">
+            <i class="fa-solid fa-calculator"></i>
+          </div>
+        </div>
+
+        <h1>NACOS GP Calculator</h1>
+        <p class="subtitle">
+          Calculate your Grade Point Average for Computer Science courses
+        </p>
+
+        <p class="muted">Select your program type</p>
+
+        <div class="btn-group">
+          <button class="card choice-btn" onclick="selectStudentType('major')">
+            <div class="choice-content">
+              <div class="choice-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+
+              <div class="choice-text">
+                <h3>Computer Science Major</h3>
+                <p>
+                  For students studying Computer Science as their primary
+                  discipline
+                </p>
+              </div>
+            </div>
+          </button>
+
+          <button
+            class="card choice-btn"
+            onclick="selectStudentType('computer-stat')"
+          >
+            <div class="choice-content">
+              <div class="choice-icon">
+                <i class="fa-solid fa-calculator"></i>
+              </div>
+
+              <div class="choice-text">
+                <h3>Computer / Statistics</h3>
+                <p>For combined Computer Science and Statistics students</p>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <footer class="footer-text">
+          University of Nigeria, Nsukka • Department of Computer Science
+        </footer>
+      </div>
+    </div>
+
+    <!-- CALCULATOR SCREEN -->
+    <div id="calculator-screen" class="screen hidden animate-fade-in">
+      <header class="app-header">
+        <div class="header-inner">
+          <!-- LEFT -->
+          <div class="header-left">
+            <button class="icon-btn" onclick="goBack()">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <div class="header-text">
+              <h1 class="header-title">
+                <i class="fa-solid fa-calculator"></i>
+                <span>GP Calculator</span>
+              </h1>
+
+              <p class="header-subtitle">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span id="program-label"></span>
+              </p>
+            </div>
+          </div>
+
+          <!-- RIGHT -->
+          <button class="reset-btn" onclick="resetGrades()">
+            <i class="fa-solid fa-arrow-rotate-right"></i>
+            <span>Reset</span>
+          </button>
+        </div>
+      </header>
+
+      <div id="tabs" class="tabs"></div>
+      <div id="content"></div>
+      <div id="gpa-box" class="animate-slide-up"></div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

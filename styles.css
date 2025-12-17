@@ -1,0 +1,650 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+/* =======================
+   CSS VARIABLES (TOKENS)
+======================= */
+:root {
+  --background: hsl(150 20% 98%);
+  --foreground: hsl(160 30% 10%);
+
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(160 30% 10%);
+
+  --primary: hsl(158 64% 35%);
+  --primary-foreground: #fff;
+
+  --secondary: hsl(158 30% 92%);
+  --secondary-foreground: hsl(158 64% 25%);
+
+  --muted: hsl(150 15% 94%);
+  --muted-foreground: hsl(160 10% 45%);
+
+  --border: hsl(150 20% 88%);
+  --ring: hsl(158 64% 35%);
+
+  --radius: 0.75rem;
+
+  /* Gradients & shadows */
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(158 64% 35%),
+    hsl(170 60% 40%)
+  );
+  --shadow-soft: 0 4px 20px -4px hsl(158 64% 35% / 0.15);
+  --shadow-card: 0 2px 12px -2px hsl(160 30% 10% / 0.08);
+  --shadow-elevated: 0 8px 30px -6px hsl(160 30% 10% / 0.12);
+
+  /* Grade colors */
+  --grade-a: hsl(158 64% 35%);
+  --grade-b: hsl(200 80% 45%);
+  --grade-c: hsl(45 90% 50%);
+  --grade-d: hsl(30 90% 55%);
+  --grade-e: hsl(15 90% 55%);
+  --grade-f: hsl(0 84% 60%);
+}
+
+/* =======================
+   BASE STYLES
+======================= */
+* {
+  box-sizing: border-box;
+  border-color: var(--border);
+}
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+/* =======================
+   LAYOUT HELPERS
+======================= */
+.screen {
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+}
+
+.screen h1,
+.screen p {
+  text-align: center;
+}
+
+.screen p {
+  color: var(--muted-foreground);
+}
+
+.hidden {
+  display: none;
+}
+
+/* =======================
+   UI ELEMENTS
+======================= */
+
+button {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+button.primary {
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
+  border: none;
+}
+
+button:hover {
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btn-group p {
+  text-align: left;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.choice-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.choice-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  background-color: var(--border);
+  font-size: 22px;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-soft);
+}
+
+.choice-text h3 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+}
+
+.choice-text p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted-foreground);
+}
+
+.choice-btn {
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.choice-btn:hover {
+  box-shadow: var(--shadow-elevated);
+  transform: translateY(-2px);
+  border: 2px solid var(--primary);
+}
+
+.choice-btn h3 {
+  margin: 0 0 6px 0;
+}
+
+.choice-btn p {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =======================
+   TABS
+======================= */
+.tab {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--muted);
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+}
+
+.tab.active {
+  background: var(--card);
+  box-shadow: var(--shadow-soft);
+}
+
+/* =======================
+   TABS
+======================= */
+.tabs-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  width: 100%;
+  background: var(--muted);
+  padding: 6px;
+  border-radius: 12px;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--muted-foreground);
+}
+
+.tab:hover {
+  background: var(--border);
+}
+
+.tab.active {
+  background: var(--card);
+  color: var(--foreground);
+  box-shadow: var(--shadow-soft);
+}
+
+/* =======================
+   COURSES
+======================= */
+.course {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+select {
+  border-radius: 8px;
+  padding: 6px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* =======================
+   COURSE CARD
+======================= */
+.course-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.course-card:hover {
+  box-shadow: var(--shadow-elevated);
+}
+
+.course-left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.course-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.course-code {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  background: hsl(158 64% 35% / 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.course-units {
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.course-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* HEADER */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: hsl(150 20% 98% / 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+}
+
+.header-inner {
+  max-width: 100%;
+  margin: auto;
+  padding: 14px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.header-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.header-title span,
+.header-subtitle span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-foreground);
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+.reset-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  font-size: 13px;
+  color: var(--muted-foreground);
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 14px;
+  }
+
+  .header-subtitle {
+    font-size: 11px;
+  }
+
+  .reset-btn span {
+    display: none;
+  }
+
+  .reset-btn {
+    padding: 6px;
+  }
+}
+
+
+/* =======================
+   GRADE SELECT
+======================= */
+.grade-select {
+  width: 4.4rem;
+  height: 2rem;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--muted);
+  cursor: pointer;
+}
+
+/* =======================
+   GRADE COLORS
+======================= */
+.grade-A {
+  background: hsl(var(--grade-a) / 0.12);
+  color: var(--grade-a);
+  border-color: hsl(var(--grade-a) / 0.3);
+}
+
+.grade-B {
+  background: hsl(var(--grade-b) / 0.12);
+  color: var(--grade-b);
+  border-color: hsl(var(--grade-b) / 0.3);
+}
+
+.grade-C {
+  background: hsl(var(--grade-c) / 0.12);
+  color: var(--grade-c);
+  border-color: hsl(var(--grade-c) / 0.3);
+}
+
+.grade-D {
+  background: hsl(var(--grade-d) / 0.12);
+  color: var(--grade-d);
+  border-color: hsl(var(--grade-d) / 0.3);
+}
+
+.grade-E {
+  background: hsl(var(--grade-e) / 0.12);
+  color: var(--grade-e);
+  border-color: hsl(var(--grade-e) / 0.3);
+}
+
+.grade-F {
+  background: hsl(var(--grade-f) / 0.12);
+  color: var(--grade-f);
+  border-color: hsl(var(--grade-f) / 0.3);
+}
+
+/* =======================
+   GPA BOX
+======================= */
+#gpa-box {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* =======================
+   UTILITIES
+======================= */
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
+
+/* =======================
+   ANIMATIONS
+======================= */
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+footer {
+  font-size: 0.8em;
+}
+
+/* =======================
+   STUDENT SELECT SCREEN
+======================= */
+/* .center-box {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+} */
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  color: var(--muted-foreground);
+  margin-bottom: 20px;
+}
+
+.muted {
+  color: var(--muted-foreground);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* .btn-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 700px;
+  width: 100%;
+  margin-top: 10px;
+} */
+
+.footer-text {
+  margin-top: 40px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+  text-align: center;
+}
+
+/* =======================
+   HEADER
+======================= */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+@media (min-width: 768px) {
+  .btn-group {
+    grid-template-columns: 1fr 1fr;
+  }
+}
